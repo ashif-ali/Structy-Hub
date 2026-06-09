@@ -1,18 +1,18 @@
 from collections import Counter
 
 def longest_unique_substring(s):
-  window_counter = Counter()
-  longest = 0
-
   start = 0
-  for end in range(len(s)):
-    leading_char = s[end]
-    window_counter[leading_char] += 1
+  longest = 0
+  freq = Counter()
 
-    while window_counter[leading_char] > 1:
-      trailing_counter = s[start]
-      window_counter[trailing_counter] -= 1
-      start+=1
+  for index, leading_char in enumerate(s):
+    freq[leading_char] += 1
 
-    longest = max(longest, end - start + 1)
-  return longest
+    while freq[leading_char] > 1:
+      trailing_char = s[start]
+      freq[trailing_char] -= 1
+      start += 1
+
+    
+    
+  
